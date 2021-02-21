@@ -12,7 +12,7 @@ body {
 }
 
 .header_class {
-  height: 80px;
+  height: 10%;
   width: 100%;
 }
 
@@ -55,12 +55,15 @@ img {
 
 
 
-.select_div {
-  margin-left: 756px;
+#select_div {
+  /*margin-left: 756px;*/
+  display: inline-block;
   border:3px solid #24292e;
   border-radius: 1px;
   width:154px;
-  margin-left: 49.9%;
+  float: right;
+  /*margin-left: 60%;*/
+  overflow: hidden;
 }
 .select {
   display: inline-block;
@@ -69,6 +72,7 @@ img {
   font-weight: bolder;
   width: 150px;
   padding: 1px 1px 1px 1px;
+  overflow: hidden;
 }
 .select:focus{
   outline:0;
@@ -76,8 +80,9 @@ img {
 
 
 .main_textarea {
-display: inline;
+display: inline-block;
 height: 500px;
+overflow: hidden;
 /* margin-bottom: -100px; */
 
 }
@@ -87,10 +92,11 @@ textarea:focus{
 
 #line_numbering_area {
   display: inline-block;
-  position: absolute;
+  /*position: absolute;*/
   resize: none;
+  /*float: left;*/
   width:2%;
-  height: 800px;
+  height: 100%;
   background-color: #24292e;
   color: grey;
   text-align: right;
@@ -98,18 +104,17 @@ textarea:focus{
   font-size: 15px;
 }
 #editor {
-	display: inline-block;
-  position: relative;
-	resize: none;
-	width: 57.9%;
-	height: 800px;
-	background-color: #24292e;
+  display: inline-block;
+ /* position: relative;*/
+  resize: none;
+  width: 57.6%;
+  height: 100%;
+  background-color: #24292e;
   font-size: 15px;
-	color: white;
-	overflow-y: auto;
+  color: white;
+  overflow-y: auto;
   overflow-x: auto;
   white-space: nowrap;
-  margin-left: 33px;
 }
 
 .io_boxes {
@@ -121,14 +126,14 @@ textarea:focus{
 #input_text {
   display: inline;
   position: relative;
-	resize: none;
+  resize: none;
   /*margin-left:37px;*/
   margin-top: -5px;
-	width: 100%;
-	height: 100px;
-	background-color: #24292e;
-	color: white;
-	overflow-y: auto;
+  width: 100%;
+  height: 100px;
+  background-color: #24292e;
+  color: white;
+  overflow-y: auto;
   overflow-x: auto;
   white-space: nowrap;
   /* grid-row-start: 9;
@@ -143,12 +148,12 @@ textarea:focus{
   margin-left:36.7%;
   margin-top: -5px;
   /* float: right; */
-	resize: none;
-	width: 103.8%;
-	height: 100px;
-	background-color: #24292e;
-	color: white;
-	overflow-y: auto;
+  resize: none;
+  width: 103.8%;
+  height: 100px;
+  background-color: #24292e;
+  color: white;
+  overflow-y: auto;
   overflow-x: auto;
   /* grid-row-start: 9;
   grid-row-end: 11;
@@ -190,6 +195,7 @@ button:focus {
   display: inline-block;
   width: 60.3%;
   align-items: center;
+  overflow: hidden;
 }
 
 .button {
@@ -297,4 +303,42 @@ button:focus {
   -webkit-transform: translateY(-1px);
           transform: translateY(-1px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.small-screen-msg {
+  top: calc(50% - 100px);
+  text-align: center;
+}
+
+.small-screen-msg p {
+  font-size: 2rem;
+  text-align: center;
+}
+
+/*.small-screen-msg {
+      width: 0;
+  }*/
+
+  @media only screen and (min-width: 768px) {
+  /* For mobile phones: */
+  .small-screen-msg {
+      display: none;
+      visibility: hidden;
+  }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 768px) {
+  /* For mobile phones: */
+  body {
+    visibility: hidden;
+  }
+
+  .box1 {
+    display: none;
+  }
+
+  .small-screen-msg {
+      display: inline-block;
+      visibility: visible;
+  }
 }
