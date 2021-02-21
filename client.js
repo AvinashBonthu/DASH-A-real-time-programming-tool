@@ -12,18 +12,18 @@ function getEl(id) {
 }
 
 function scrollToBottom() {
-	var textarea = document.getElementById('editor');
-	textarea.scrollTop = textarea.scrollHeight;
+  var textarea = document.getElementById('editor');
+  textarea.scrollTop = textarea.scrollHeight;
 }
 scrollToBottom();
 function scrollToBottom1() {
-	var textarea = document.getElementById('input_text');
-	textarea.scrollTop = textarea.scrollHeight;
+  var textarea = document.getElementById('input_text');
+  textarea.scrollTop = textarea.scrollHeight;
 }
 scrollToBottom1();
 function scrollToBottom2() {
-	var textarea = document.getElementById('output_text');
-	textarea.scrollTop = textarea.scrollHeight;
+  var textarea = document.getElementById('output_text');
+  textarea.scrollTop = textarea.scrollHeight;
 }
 scrollToBottom2();
 
@@ -36,20 +36,20 @@ var params;
 var peopl;
 
 socket.on('connect', () => {
-	console.log('connected to server');
-	let searchQuery = window.location.search.substring(1);
-	 params = JSON.parse('{"' + decodeURI(searchQuery).replace(/&/g, '","').replace(/\+/g,' ').replace(/=/g,'":"') + '"}');
-	 console.log(params)
-	 joinRoom(params.room)
-	socket.emit('join',params, function(err){
-		if(err){
-			alert(err);
-			window.location.href = '/join.html';
-		}
-		else {
-			console.log('No error');
-			}
-	})
+  console.log('connected to server');
+  let searchQuery = window.location.search.substring(1);
+   params = JSON.parse('{"' + decodeURI(searchQuery).replace(/&/g, '","').replace(/\+/g,' ').replace(/=/g,'":"') + '"}');
+   console.log(params)
+   joinRoom(params.room)
+  socket.emit('join',params, function(err){
+    if(err){
+      alert(err);
+      window.location.href = '/join.html';
+    }
+    else {
+      console.log('No error');
+      }
+  })
 });
 
 socket.on('alert_user', name => {
@@ -161,40 +161,40 @@ document.addEventListener(
 
     else
     document.getElementById("cap_people").style.marginTop = "0.0%"
-		document.getElementById("select_div").style.marginLeft = "50.2%";
+    document.getElementById("select_div").style.marginLeft = "50.2%";
    }
  })
 
 document.querySelector("#execute").addEventListener('click',(evt)=>{
   output.value = preResult;
   socket.send({msg: preResult, id:2});
-	document.querySelector(".loader").style.display = "inline-block"
-	const code = editor.value;
-	const inp = input.value;
-	const lang = language.value
-	console.log(code)
-	socket.emit('news',{code,inp,lang})
-	socket.on('output', (msg)=> {
+  document.querySelector(".loader").style.display = "inline-block"
+  const code = editor.value;
+  const inp = input.value;
+  const lang = language.value
+  console.log(code)
+  socket.emit('news',{code,inp,lang})
+  socket.on('output', (msg)=> {
     document.querySelector(".loader").style.display = "none"
-		console.log(msg.output)
-		output.value = msg.output
-		const text = output.value
-		socket.send({msg:text, id:2})
-		// document.querySelector(".loader").style.display = "none"
-	})
-	//compile(code)
+    console.log(msg.output)
+    output.value = msg.output
+    const text = output.value
+    socket.send({msg:text, id:2})
+    // document.querySelector(".loader").style.display = "none"
+  })
+  //compile(code)
 })
 
 
 messageForm.addEventListener('submit', e => {
-	e.preventDefault()
+  e.preventDefault()
   let message = messageInput.value
   message = message.trim()
 
   if(message.length > 0){
   // console.log(`length hai ${message.length}`)
-	appendMessage1(`You: ${message}`)
-	socket.emit('send-chat-message', {message: message, roomId: params.room})
+  appendMessage1(`You: ${message}`)
+  socket.emit('send-chat-message', {message: message, roomId: params.room})
   messageInput.value = ''
   }
   })
@@ -204,65 +204,65 @@ messageForm.addEventListener('submit', e => {
   // div {text-align: center;}
   const messageElement = document.createElement('div')
   // messageElement {text-align: center;}
-	// messageElement1.appendChild(messageElement)
-	// messageElement1.style.backgroundColor = "none"
-	 //messageElement1.style.width = 100 + 'px'
-	messageElement.innerText = message
-	messageContainer.append(messageElement)
-	// messageElement.style.border = "2px solid #24292e"
-	// messageElement.style.boderRadius = 20 + "px"
-	scrollToBottom3()
+  // messageElement1.appendChild(messageElement)
+  // messageElement1.style.backgroundColor = "none"
+   //messageElement1.style.width = 100 + 'px'
+  messageElement.innerText = message
+  messageContainer.append(messageElement)
+  // messageElement.style.border = "2px solid #24292e"
+  // messageElement.style.boderRadius = 20 + "px"
+  scrollToBottom3()
   }
 
   function appendMessage1(message) {
-  	// const messageElement1 = document.createElement('div')
-	const messageElement = document.createElement('div')
-	// messageElement1.append(messageElement)
-	// messageElement1.style.width = 495 + 'px'
-	// messageElement1.style.backgroundColor = "none"
-	messageElement.innerText = message
-	messageContainer.append(messageElement)
-	messageElement.style.marginLeft = 320 + "px"
-	messageElement.style.display = "block"
-	// messageElement.style.float = "right"
-	// messageElement.style.border = "2px solid #24292e" 
-	// messageElement.style.boderRadius = 20 + "px"
-	scrollToBottom3()
+    // const messageElement1 = document.createElement('div')
+  const messageElement = document.createElement('div')
+  // messageElement1.append(messageElement)
+  // messageElement1.style.width = 495 + 'px'
+  // messageElement1.style.backgroundColor = "none"
+  messageElement.innerText = message
+  messageContainer.append(messageElement)
+  messageElement.style.marginLeft = 320 + "px"
+  messageElement.style.display = "block"
+  // messageElement.style.float = "right"
+  // messageElement.style.border = "2px solid #24292e" 
+  // messageElement.style.boderRadius = 20 + "px"
+  scrollToBottom3()
   }
 
 
 language.addEventListener('change', (evt3) => {
-	const text = language.value
-	socket.send({msg:text, id:3})
+  const text = language.value
+  socket.send({msg:text, id:3})
 })
 
 editor.addEventListener('input', (evt) => {
     const text = editor.value
-    	socket.send({msg:text, id:0})  
+      socket.send({msg:text, id:0})  
 })
 
 output.addEventListener("input", (evt1) =>{
-	const text = output.value
-	socket.send({msg:text, id:2})
-	
+  const text = output.value
+  socket.send({msg:text, id:2})
+  
 })
 input.addEventListener('input', (evt2) => {
-	const text = input.value
-	socket.send({msg:text, id:1})
+  const text = input.value
+  socket.send({msg:text, id:1})
 
 })
 socket.on('message', (data) => {
-	if(data.id == 0)
-    	editor.value = data.msg
-	else if(data.id == 1)
-		input.value = data.msg
-	else if(data.id == 2) 
-		output.value = data.msg
-	else if(data.id == 3)
+  if(data.id == 0)
+      editor.value = data.msg
+  else if(data.id == 1)
+    input.value = data.msg
+  else if(data.id == 2) 
+    output.value = data.msg
+  else if(data.id == 3)
     language.value = data.msg
-	scrollToBottom();
-	scrollToBottom1();
-	scrollToBottom2();
+  scrollToBottom();
+  scrollToBottom1();
+  scrollToBottom2();
 })
 
 ///////////video chat///////////////
@@ -365,7 +365,7 @@ function joinRoom(room) {
 
 function showVideoConference() {
   // roomSelectionContainer.style = 'display: none'
-  videoChatContainer.style = 'display: block'
+  videoChatContainer.style = 'display: inline-block'
 }
 
 async function setLocalStream(mediaConstraints) {
