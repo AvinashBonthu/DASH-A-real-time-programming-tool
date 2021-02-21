@@ -36,12 +36,14 @@
       }
 
       #video-chat-container {
-        width: 547px;
+        width: 39%;
         /* margin-top: -958px; */
-        display: inline-flex;
+        display: inline-block;
         height: 50%;
         float: right;
-        margin-left: 62.5%;
+        margin:0.5%;
+        /*margin-left: 62.5%;*/
+        overflow: hidden;
         background-color: black;
       }
 
@@ -81,26 +83,22 @@
       }
 
       #chat-box {
-        /*position: relative;*/
-        /* display:inline-block; */
-        width: 549px;
+        width: 100%;
+        float: right;
         height: 100%;
         border: 2px solid #24292e;
         background-image: url("chatbox-bck.png");
-        margin-top: -507px;
-        margin-left: -19px;
+        display: inline-block;
         overflow-y: auto;
         overflow-x: hidden;
       }
 
       #message-container {
-        width: 520px;
-        max-width: 1000px;
+        width: 39%;
         height: 500px;
       }
 
       #message-container div {
-        /*background-color: #CCC;*/
         max-width: 200px;
         word-wrap: break-word;
         display: block;
@@ -114,28 +112,16 @@
         border-radius: 20px;
       }
 
-      /* #message-container div:nth-child(2n) {
-          background-color: #FFF;
-        } */
-
       #send-container {
         bottom: 0;
         display: inline;
         background-color: white;
-        /*font-size: 2rem;*/
-        /*max-width: 1200px;*/
         width: 500px;
         height: 100px;
-        margin-left: -19px;
         margin-top: 5%;
-
-        /*color: #24292e;*/
-
-        /*display: inline-block;*/
       }
 
       #message-input {
-        /*flex-grow: 1;*/
         width: 550px;
         height: 32px;
         font-size: 1rem;
@@ -145,10 +131,10 @@
       #cap_people{
         display: inline;
         width:50%; 
-        float: left; 
-        margin-top: -1.9%; 
+        /*float: left;*/ 
+        /*margin-top: -1.9%;*/ 
         height:100%;  
-        text-align: left; 
+        /*text-align: left;*/ 
         font-size: large; 
         /* margin-left: 30%;  */
         font-weight: 600;
@@ -161,35 +147,26 @@
         height:100%;  
         text-align: left; 
         font-size: large; 
-        margin-left: 21%; 
+        /*margin-left: 21%;*/ 
         font-weight: 600;
       }
 
       #whole_chat {
-        /* display: flex; */
-        display: inline;
-        /* position: static; */
+        display: inline-block;
         float: right;
-        width: 550px;
-        /* height: 500px; */
-        /* margin-top: 400px; */
-        /* margin-left: 60%; */
+        width: 39%;
+        overflow: hidden;
+        margin-top: -12%;
       }
-
-      #select_div{
-        display: inline;
-        margin-left: 50.2%
-      }
-
-      /*#right_part {
-          float: right;
-          display: block;
-
-        }*/
     </style>
   </head>
 
   <body>
+
+    <div class="small-screen-msg">
+      <p>Not Authorized</p>
+      <p>Open in Laptop</p>
+    </div>
     <!-- <h1>DASH</h1> -->
     <header class="header_division_class">
       <div class="logo">
@@ -211,13 +188,18 @@
       </div>
     </header>
 
-    <div class="box1">
-      <div class="header2">
-        <span id="report" style="color: red;">
+    <div class="box1" style="width: 100%;">
+      <div class="header2" style="width: 60%;display: inline-block;">
+
+        <span id="cap_people">
+          People in room
+        </span>
+
+        <span id="report" style="color: red;display: inline-block;">
           
         </span>
         
-        <div id="select_div">
+        <div id="select_div" style="display: inline-block;">
           <select class="select" id="language">
             <option disabled="disabled" visibility="hidden">
               Select a language.
@@ -229,15 +211,13 @@
           </select>
         </div>
 
-        <span id="cap_people">
-          People in room
-        </span>
+        
       </div>
 
       <div
         id="video-chat-container"
         class="video-position"
-        style="display: inline-flex"
+        style="display: inline-block !important;"
       >
         <video id="local-video" autoplay="autoplay" muted></video>
         <video id="remote-video" autoplay="autoplay"></video>
@@ -260,6 +240,17 @@
           class="lined"
         ></textarea>
       </div>
+
+      <div id="whole_chat">
+      <div id="chat-box">
+        <div id="message-container"></div>
+      </div>
+      <form id="send-container">
+        <div style="display: inline;"><input type="text" id="message-input" autocomplete="off"  placeholder= "Type your message here..." style="width: 90%; height: 37px; margin-top: 9px;"/></div>
+        <div style="display:inline; margin-top: -1%;"><button type="submit" id="send-button" style="background-color: #24292e; width:9%;"> <img src="chatfin-removebg-preview.png" style="width: 100%; height:100%; margin: 0% 0% 0% 0%;"> </button>
+        </div>
+        </form>
+    </div>
 
       <!-- <script src="socket.io/socket.io.js"></script>
        <script src="script.js"></script> -->
@@ -293,17 +284,8 @@
           <i>EXECUTE</i>
         </button>
       </div>
-    </div>
 
-    <div id="whole_chat">
-      <div id="chat-box">
-        <div id="message-container"></div>
-      </div>
-      <form id="send-container">
-        <div style="display: inline;"><input type="text" id="message-input" autocomplete="off"  placeholder= "Type your message here..." style="width: 90%; height: 37px; margin-top: 9px;"/></div>
-        <div style="display:inline; margin-top: -1%;"><button type="submit" id="send-button" style="background-color: #24292e; width:9%;"> <img src="chatfin-removebg-preview.png" style="width: 100%; height:100%; margin: 0% 0% 0% 0%;"> </button>
-        </div>
-        </form>
+      
     </div>
 
     <script type="text/javascript">
@@ -341,22 +323,22 @@
             if (document.fullscreen == true) {
                 document.getElementById("closing").style.display = "none";
                 document.getElementById("MyClockDisplay").style.marginLeft =
-				// window.close();
-				74.38 + "%";
+        // window.close();
+        74.38 + "%";
                 clearInterval(countdown);
-			  }
-			  
-			  else if(seconds <= 0)
-			  {
-				  window.parent.close();
-			  }
+        }
+        
+        else if(seconds <= 0)
+        {
+          window.parent.close();
+        }
             
             document.addEventListener("keydown", (e) => {
               if(e.keyCode == 122)
               {
                seconds = 10;
                document.getElementById('closing').style.display = 'none'
-					     document.getElementById('MyClockDisplay').style.marginLeft = 74.38 + "%"
+               document.getElementById('MyClockDisplay').style.marginLeft = 74.38 + "%"
                clearInterval(countdown);
               }
             })
@@ -398,7 +380,7 @@
       showTime();
 
     </script>
-    <script src='fullscreen.js'></script>
+    <!-- <script src='fullscreen.js'></script> -->
   </body>
   <script src="./socket.io/socket.io.js"></script>
   <script type="text/javascript" src="line_numbering.js"></script>
