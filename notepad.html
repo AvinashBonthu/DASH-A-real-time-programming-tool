@@ -175,11 +175,11 @@
         <p id="closing" style="display: inline-flex;">Press F11 else exiting in 10 seconds...</p>
     
         <script>
-        console(`running script`)
+        console.log(`running script`)
             let seconds = 10
             let countdown = setInterval(function() {
               seconds--;
-              document.getElementById("closing").innerText = `Change to full screen else exiting in ${second} seconds...`;
+              document.getElementById("closing").innerText = `Change to full screen else exiting in ${seconds} seconds...`;
               if (seconds <= 0) clearInterval(countdown);
               }, 1000);
       </script>
